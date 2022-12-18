@@ -43,7 +43,7 @@ body {
     align-items: center;
     
   }
-  header input[type='submit']{
+  header input[type='submit'] , .search-weather{
     margin-left: 10px;
     padding: 10px 20px;
     background-color: #1063df93;
@@ -97,7 +97,7 @@ body {
   .during-the-day {
     padding: 1rem 0 ;
     width: 100%;
-    margin: 0 auto;
+    margin: 2rem auto 0 auto;
     display: flex;
     justify-content: space-between;
   }
