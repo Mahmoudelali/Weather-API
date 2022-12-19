@@ -27,7 +27,6 @@ p , time , span {
 }
 body {
     font-family: 'Raleway', sans-serif;
-    /* margin: 40px; */
     background-color: #9CCEF4;
   }
   header {
@@ -37,13 +36,14 @@ body {
     align-items: center;
     justify-content: flex-start;
     padding: 0 5%;
-  }aqua
+  }
   header form {
     display: flex;
     align-items: center;
     
   }
   header input[type='submit'] , .search-weather{
+    cursor: pointer;
     margin-left: 10px;
     padding: 10px 20px;
     background-color: #1063df93;
@@ -51,6 +51,10 @@ body {
     color: #eee;
     font-size: 30px;
     font-weight: 500;
+    transition: .52s;
+  }
+  .search-weather:hover {
+    background-color:#1063df63 ;
   }
   header input[type='text']{
     color: #eee;
@@ -101,9 +105,9 @@ body {
     display: flex;
     justify-content: space-between;
   }
-
+  
   /* time instant */
-
+  
   .time-instant {
     width: 10%;
     min-height: 250px ;
@@ -111,3 +115,52 @@ body {
     flex-direction: column;
     justify-content: space-between;
   }
+  @media screen and (max-width:480px) {
+    .search-weather{
+      padding: 5px 15px;
+      width: 30%;
+      font-size: .6rem;
+      
+    }
+    header input[type='text'] {
+      padding: unset;
+      width: 60%;
+    }
+    header div {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* content */
+    .overall-weather {
+      width: 100%;
+    }
+    .during-the-day {
+      flex-direction: column;
+      gap :1rem;
+
+      /* justify-content: center; */
+    }
+    .instant-img-container{
+      height: 70px ;
+      width: 70px;
+    }
+    .instant-img-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .time-instant {
+      padding-bottom: .7rem ;
+      border-bottom:1px solid  #0c3b668a;
+      font-size: .8rem;
+      width: 100%;
+      gap: 1rem;
+      min-height: unset;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: .5rem;
+    }
+  }
+
+  

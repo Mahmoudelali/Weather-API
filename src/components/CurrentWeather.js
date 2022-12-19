@@ -1,17 +1,18 @@
 import partlyCloudy from '../img/weather-icons/partlycloudy.svg';
 import React from 'react';
+
 class CurrentWeather extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+	// constructor(props) {
+	// 	super(props);
+	// }
 
 	render() {
 		return (
 			<div className="overall-weather">
 				<div className="overall-weather-img-container">
-					<img src={partlyCloudy}></img>
+					<img src={partlyCloudy} alt={'weather status'}></img>
 				</div>
-				<h1 className="center">overcast clouds</h1>
+				<h1 className="center">{this.props.description}</h1>
 				<p className="center">
 					{' '}
 					<strong>Temperature </strong> {this.props.temperature}&deg;

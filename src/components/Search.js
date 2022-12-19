@@ -2,9 +2,7 @@ import React from 'react';
 
 // import clear from "../img/weather-icons/clear.svg";
 class Search extends React.Component {
-	constructor(props) {
-		super(props);
-	}
+	
 	state = {
 		input: '',
 	};
