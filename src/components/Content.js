@@ -8,17 +8,15 @@ import cloudy from '../img/weather-icons/cloudy.svg';
 import drizzle from '../img/weather-icons/drizzle.svg';
 
 class Content extends React.Component {
-	// constructor(props) {
-	// 	super(props);
-	// }
+	constructor(props) {
+		super(props);
+		this.state = {
+			items: this.props.items,
+		};
+	}
 
 	render() {
-		const toCelsius = (index) => {
-			return Number(
-				this.props.weatherObject.list[index].main.temp - 273.15,
-			).toFixed(1);
-		};
-
+		const {items} = this.props 
 		const handleImageSetting = (index) => {
 			if (
 				this.props.weatherObject.list[index].weather[0].description ===
@@ -49,62 +47,110 @@ class Content extends React.Component {
 				return <img src={cloudy} alt={'cloudy sky weather'}></img>;
 			}
 		};
+		{
+			if (this.props.loaded) {
+				return <div>Loading ...</div>;
+			} else {
+				return (
+					<div className="content">
+						<CurrentWeather
+							description={
+								items
+									? items.list[0].weather[0]
+											.description
+									: null
+							}
+							temperature={Number(
+								items
+									?items.list[1].main.temp_min
+									: null,
+							).toFixed(0)}
+							temperature_to={Number(
+								items
+									? items.list[2].main.temp_max
+									: null,
+							).toFixed(0)}
+							humidity={Number(
+								items
+									? items.list[3].main.humidity
+									: null,
+							).toFixed(0)}
+							pressure={Number(
+								items
+									? items.list[4].main.pressure
+									: null,
+							).toFixed(0)}
+						/>
 
-		return (
-			<div className="content">
-				<CurrentWeather
-					description={
-						this.props.weatherObject.list[0].weather[0].description
-					}
-					temperature={Number(
-						this.props.weatherObject.list[0].main.temp_min - 273.15,
-					).toFixed(1)}
-					temperature_to={Number(
-						this.props.weatherObject.list[0].main.temp_max - 273.15,
-					).toFixed(1)}
-					humidity={this.props.weatherObject.list[0].main.humidity}
-					pressure={this.props.weatherObject.list[0].main.pressure}
-				/>
-
-				<div className="during-the-day">
-					<TimeInstant
-						time={'03:00'}
-						src={handleImageSetting(2)}
-						degree={toCelsius(2)}
-					/>
-					<TimeInstant
-						time={'06:00'}
-						src={handleImageSetting(5)}
-						degree={toCelsius(5)}
-					/>
-					<TimeInstant
-						time={'09:00'}
-						src={handleImageSetting(8)}
-						degree={toCelsius(8)}
-					/>
-					<TimeInstant
-						time={'12:00'}
-						src={handleImageSetting(11)}
-						degree={toCelsius(11)}
-					/>
-					<TimeInstant
-						time={'15:00'}
-						src={handleImageSetting(14)}
-						degree={toCelsius(14)}
-					/>
-					<TimeInstant
-						time={'18:00'}
-						src={handleImageSetting(17)}
-						degree={toCelsius(17)}
-					/>
-					<TimeInstant
-						time={'21:00'}
-						src={handleImageSetting(20)}
-						degree={toCelsius(20)}
-					/>
-				</div>
-			</div>
-		);
+						<div className="during-the-day">
+							<TimeInstant
+								time={'03:00'}
+								src={handleImageSetting(2)}
+								degree={Number(
+									items
+										? items.list[1].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'06:00'}
+								src={handleImageSetting(5)}
+								degree={Number(
+									items
+										? items.list[2].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'09:00'}
+								src={handleImageSetting(8)}
+								degree={Number(
+									items
+										? items.list[3].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'12:00'}
+								src={handleImageSetting(11)}
+								degree={Number(
+									items
+										? items.list[4].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'15:00'}
+								src={handleImageSetting(14)}
+								degree={Number(
+									items
+										? items.list[5].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'18:00'}
+								src={handleImageSetting(17)}
+								degree={Number(
+									items
+										? items.list[6].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+							<TimeInstant
+								time={'21:00'}
+								src={handleImageSetting(20)}
+								degree={Number(
+									items
+										? items.list[7].main.temp
+										: null,
+								).toFixed(0)}
+							/>
+						</div>
+					</div>
+				);
+			}
+		}
 	}
 }
 

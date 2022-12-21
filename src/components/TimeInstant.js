@@ -1,18 +1,20 @@
 import React from 'react';
 
 class TimeInstant extends React.Component {
-	// constructor({props}) {
-	// 	super(props);
-	// }
+	constructor({props}) {
+		super(props);
+	}
+	
 	render() {
+		const {src , time , degree}= this.props
 		return (
 			<div className="time-instant">
-				<time className="center block">{this.props.time}</time>
+				<time className="center block">{time}</time>
 				<div className="instant-img-container" >
-					{this.props.src}
+					{src}
 				</div>
 				<p className="instant-degree center">
-					{this.props.degree}&deg;C
+					{degree}&deg;C
 				</p>
 			</div>
 		);
